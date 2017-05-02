@@ -5,7 +5,7 @@
 1. Create a new package.  
 `cd ~/catkin_ws/src`  
 `catkin_create_pkg final`
-2. Clone this repo into catkin_ws/src/gaitech_edu  
+2. Clone this repo into new project  
   `cd ~/catkin_ws/src/final`  
   `git clone https://github.com/nbgraham/gaitech_edu.git`  
 3.
