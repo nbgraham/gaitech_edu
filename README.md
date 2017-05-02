@@ -8,6 +8,7 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
 `catkin_create_pkg gaitech_edu`
 2. Clone this repo into new project  
   `cd ~/catkin_ws/src/gaitech_edu`  
+  `rm *`  
   `git clone https://github.com/nbgraham/gaitech_edu.git .`  
 3.
  - Update keys (maybe)  
