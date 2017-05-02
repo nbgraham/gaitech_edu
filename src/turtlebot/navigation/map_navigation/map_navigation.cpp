@@ -36,7 +36,7 @@ char choose();
 /** declare the coordinates of interest **/
 double xCafe = 15.50;
 double yCafe = 10.20;
-double xOffice1 = 27.70 ;
+double xOffice1 = 40.0 ;
 double yOffice1 = 13.50;
 double xOffice2 = 30.44 ;
 double yOffice2 = 13.50;
@@ -141,5 +141,3 @@ char choose(){
 
 
 }
-
-
