@@ -1,4 +1,5 @@
-[gaitech repo](https://github.com/aniskoubaa/gaitech_edu) 
+[gaitech repo](https://github.com/aniskoubaa/gaitech_edu)  
+All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_navigation/scripts/map_navigation.py
 
 # robot-tour-guide
 ## Set-up
