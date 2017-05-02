@@ -1,3 +1,38 @@
+# robot-tour-guide
+## Set-up
+1. Create a new package.  
+`cd ~/catkin_ws/src`  
+`catkin_create_pkg gaitech_edu`
+2. Clone [gaitech repo](https://github.com/aniskoubaa/gaitech_edu) into catkin_ws/src/gaitech_edu  
+  `cd ~/catkin_ws/src/gaitech_edu`  
+  `git clone https://github.com/aniskoubaa/gaitech_edu .`  
+3.
+ - Update keys (maybe)  
+`sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'`  
+`wget http://code.ros.org/packages/ros.key -O - | sudo apt-key add -`  
+`sudo apt-get update`
+ - Install general sound for ROS  
+      `sudo apt-get install ros-indigo-audio-common`  
+      `sudo apt-get install ros-indigo-pocketsphinx`
+4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  
+  `sudo mv /opt/ros/indigo/share/turtlebot_navigation/launch/includes/amcl/amcl.launch.xml /opt/ros/indigo/share/turtlebot_navigation/launch/includes`
+5. Run the project  
+    `roslaunch gaitech_edu map_navigation_stage_psu.launch`
+
+## To Do
+ - [ ] Create a world (probably need to create an actual environment and use the robot to map it
+ - [ ] Choose new points as destinations and add those options to the command line options
+ - [ ] Add an option to tour all of the destinations
+ - [ ] Reduce status print statements and add print outs for options and description for each destination
+ - [ ] Document everything we have done and pretend we did more
+
+
+
+
+
+Gaitech ReadMe
+---------
+
 Welcome to Gaitech’s Education Portal!
 ================================
 Gaitech is pround to provide you a comprehensive educational framework on Robot Operating System (ROS). We provide a series of online tutorials on ROS that will help you getting familiar with ROS.
