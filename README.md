@@ -1,11 +1,13 @@
+[gaitech repo](https://github.com/aniskoubaa/gaitech_edu) 
+
 # robot-tour-guide
 ## Set-up
 1. Create a new package.  
 `cd ~/catkin_ws/src`  
-`catkin_create_pkg gaitech_edu`
-2. Clone [gaitech repo](https://github.com/aniskoubaa/gaitech_edu) into catkin_ws/src/gaitech_edu  
-  `cd ~/catkin_ws/src/gaitech_edu`  
-  `git clone https://github.com/aniskoubaa/gaitech_edu .`  
+`catkin_create_pkg final`
+2. Clone this repo into catkin_ws/src/gaitech_edu  
+  `cd ~/catkin_ws/src/final`  
+  `git clone https://github.com/nbgraham/gaitech_edu.git`  
 3.
  - Update keys (maybe)  
 `sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'`  
