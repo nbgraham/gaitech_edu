@@ -19,7 +19,7 @@ class map_navigation():
 
     def choose(self):
 
-        choice='q'
+        choice = 'q'
 
         rospy.loginfo("|-------------------------------|")
         rospy.loginfo("|PRESSE A KEY:")
@@ -37,10 +37,10 @@ class map_navigation():
     def __init__(self):
 
         self.highlights = []
-        self.highlights.append(highlight("Cafe", 7.31, 1.46))
-        self.highlights.append(highlight("Office 1", 30.0, 20.0    ))
-        self.highlights.append(highlight("Office 2", -2.35, -0.95))
-        self.highlights.append(highlight("Office 3", 35.20, 13.50))
+        self.highlights.append(highlight("Cafe", 14, 13))
+        self.highlights.append(highlight("Office 1", 28, 13))
+        self.highlights.append(highlight("Office 2", 30.5, 12))
+        self.highlights.append(highlight("Office 3", 34, 12))
 
         sc = SoundClient()
         path_to_sounds = "/home/ros/catkin_ws/src/gaitech_edu/src/sounds/"
