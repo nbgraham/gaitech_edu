@@ -15,13 +15,13 @@
   <!-- Name of the map to use (without path nor extension) and initial position -->
   <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/psu.yaml"/> <!-- psu -->
   <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/psu.world"/>
-  <arg name="initial_pose_x" default="38"/>
-  <arg name="initial_pose_y" default="13"/>
+  <arg name="initial_pose_x" default="20.925"/>
+  <arg name="initial_pose_y" default="11.925"/>
   <arg name="initial_pose_a" default="0.0"/>
 
   <param name="/use_sim_time" value="true"/>
   <!--  ******************** Stage ********************  -->
-  <!--
+  <!-- 
         Publishes transforms:
           /base_link -> /base_laser
           /base_footprint -> /base_link (identity)
@@ -68,7 +68,7 @@
     <param name="frame_id" value="/map"/>
   </node>
 
-  <include file="$(find turtlebot_navigation)/launch/includes/amcl.launch.xml">
+  <include file="$(find turtlebot_navigation)/launch/includes/amcl/amcl.launch.xml">
     <arg name="scan_topic" value="scan"/>
     <arg name="use_map_topic" value="true"/>
     <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
