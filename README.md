@@ -14,8 +14,9 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
 `sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'`  
 `wget http://code.ros.org/packages/ros.key -O - | sudo apt-key add -`  
 `sudo apt-get update`
- - Install general sound for ROS  
-      `sudo apt-get install ros-indigo-audio-common`  
+ - Install general sound for ROS (shouldn't be needed anymore)  
+      `sudo apt-get install ros-indigo-audio-common`
+ - Install pocketsphinx, whatever that is  
       `sudo apt-get install ros-indigo-pocketsphinx`
 4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  
   `sudo mv /opt/ros/indigo/share/turtlebot_navigation/launch/includes/amcl/amcl.launch.xml /opt/ros/indigo/share/turtlebot_navigation/launch/includes`

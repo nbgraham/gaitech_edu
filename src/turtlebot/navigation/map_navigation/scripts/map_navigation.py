@@ -6,7 +6,6 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from math import radians, degrees
 from actionlib_msgs.msg import *
 from geometry_msgs.msg import Point
-from sound_play.libsoundplay import SoundClient
 
 class highlight():
     def __init__(self, name, x, y):
@@ -39,11 +38,8 @@ class map_navigation():
         self.highlights = []
         self.highlights.append(highlight("Cafe", 14, 13))
         self.highlights.append(highlight("Office 1", 28, 13))
-        self.highlights.append(highlight("Office 2", 30.5, 12))
-        self.highlights.append(highlight("Office 3", 34, 12))
-
-        sc = SoundClient()
-        path_to_sounds = "/home/ros/catkin_ws/src/gaitech_edu/src/sounds/"
+        self.highlights.append(highlight("Office 2", 30.5, 14))
+        self.highlights.append(highlight("Office 3", 35, 14))
 
         # declare the coordinates of interest
         self.goalReached = False
@@ -61,13 +57,8 @@ class map_navigation():
                 rospy.loginfo("Congratulations!")
                 #rospy.spin()
 
-                sc.playWave(path_to_sounds+"ship_bell.wav")
-
-                #rospy.spin()
-
             else:
                 rospy.loginfo("Hard Luck!")
-                sc.playWave(path_to_sounds+"short_buzzer.wav")
 
         while choice != 'q':
             choice = self.choose()
@@ -81,12 +72,8 @@ class map_navigation():
                     rospy.loginfo("Congratulations!")
                     #rospy.spin()
 
-                    sc.playWave(path_to_sounds+"ship_bell.wav")
-
                 else:
                     rospy.loginfo("Hard Luck!")
-                    sc.playWave(path_to_sounds+"short_buzzer.wav")
-
 
     def shutdown(self):
         # stop turtlebot
