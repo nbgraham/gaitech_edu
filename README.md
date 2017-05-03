@@ -21,7 +21,8 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
 4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  
   `sudo mv /opt/ros/indigo/share/turtlebot_navigation/launch/includes/amcl/amcl.launch.xml /opt/ros/indigo/share/turtlebot_navigation/launch/includes`
 5. Run the project  
-    `roslaunch gaitech_edu map_navigation_stage_psu.launch`
+    `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
+    `rosrun gaitech_edu control.py`
 
 ## To Do
  - [ ] Create a world (probably need to create an actual environment and use the robot to map it
