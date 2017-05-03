@@ -14,11 +14,13 @@ class highlight():
 class control():
 
     def __init__(self):
+        self.plannedHighlights = []
+
         self.highlights = []
         self.highlights.append(highlight("Cafe", 14, 13))
         self.highlights.append(highlight("Office 1", 28, 13))
-        self.highlights.append(highlight("Office 2", 30.5, 14))
-        self.highlights.append(highlight("Office 3", 35, 14))
+        self.highlights.append(highlight("Office 2", 30.5, 13.5))
+        self.highlights.append(highlight("Office 3", 35, 12.8))
 
         rospy.init_node('control', anonymous=False)
         self.pub = rospy.Publisher('goals', goal, queue_size=10)
@@ -39,6 +41,7 @@ class control():
         for index, item in enumerate(self.highlights):
             rospy.loginfo("|'" + str(index) + "': " + item.name)
 
+        rospy.loginfo("|'t': Tour ")
         rospy.loginfo("|'q': Quit ")
         rospy.loginfo("|-------------------------------|")
         rospy.loginfo("| PRESS A KEY:")
@@ -49,16 +52,21 @@ class control():
             self.choice = 'q'
             self.callback("Success")
         else:
-            if (choice < len(self.highlights)):
-                cur_highlight = self.highlights[choice]
-                rospy.loginfo("Going to " + cur_highlight.name)
-                new_goal = self.highlightToGoal(cur_highlight)
-                self.pub.publish(new_goal)
-
-                # wait for completing move
+            if choice == 't':
+                self.plannedHighlights = self.highlights
+                rospy.loginfo("Starting tour")
+                self.goToHighlight(self.plannedHighlights.pop())
+            elif (choice < len(self.highlights)):
+                self.goToHighlight(self.highlights[choice])
+            # wait for completing move
 
         return choice
 
+    def goToHighlight(self, highlightIn):
+        cur_highlight = highlightIn
+        rospy.loginfo("Going to " + cur_highlight.name)
+        new_goal = self.highlightToGoal(cur_highlight)
+        self.pub.publish(new_goal)
 
     def highlightToGoal(self, highlightIn):
         new_goal = goal()
@@ -73,9 +81,14 @@ class control():
                 rospy.loginfo("Congratulations!")
             else:
                 rospy.loginfo("Hard Luck!")
-            self.choice = self.choose()
+
+            if len(self.plannedHighlights) > 0:
+                self.goToHighlight(self.plannedHighlights.pop())
+            else:
+                self.choice = self.choose()
         else:
             rospy.loginfo("Quitting")
+            rospy.signal_shutdown("User quit")
 
 
 if __name__ == '__main__':
