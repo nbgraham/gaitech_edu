@@ -22,14 +22,14 @@ class map_navigation():
         choice = 'q'
 
         rospy.loginfo("|-------------------------------|")
-        rospy.loginfo("|PRESSE A KEY:")
+        rospy.loginfo("| Choose a destination:")
 
         for index, item in enumerate(self.highlights):
             rospy.loginfo("|'" + str(index) + "': " + item.name)
 
         rospy.loginfo("|'q': Quit ")
         rospy.loginfo("|-------------------------------|")
-        rospy.loginfo("|WHERE TO GO?")
+        rospy.loginfo("| PRESS A KEY:")
 
         choice = input()
         return choice
