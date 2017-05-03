@@ -11,6 +11,20 @@ find_package(catkin REQUIRED COMPONENTS
  pocketsphinx
  tf
  sound_play
+ message_generation
+)
+
+## Declare ROS messages and services
+add_message_files(DIRECTORY msg FILES
+goal.msg
+)
+#add_service_files(DIRECTORY srv FILES )
+
+## Generate added messages and services
+generate_messages(DEPENDENCIES std_msgs)
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
 )
 
 catkin_package(
@@ -18,17 +32,7 @@ catkin_package(
 #  LIBRARIES lab_exams
 #  CATKIN_DEPENDS geometry_msgs message_generation roscpp rospy std_msgs
 #  DEPENDS system_lib
-)
-
-## Declare ROS messages and services
-#add_message_files(DIRECTORY msg FILES )
-#add_service_files(DIRECTORY srv FILES )
-
-## Generate added messages and services
-#generate_messages(DEPENDENCIES std_msgs)
-
-include_directories(
-  ${catkin_INCLUDE_DIRS}
+CATKIN_DEPENDS message_runtime
 )
 
 ## Declare a catkin package
@@ -55,5 +59,3 @@ target_link_libraries(free_space_navigation_node ${catkin_LIBRARIES})
 
 add_executable(map_navigation_node src/turtlebot/navigation/map_navigation/map_navigation.cpp)
 target_link_libraries(map_navigation_node ${catkin_LIBRARIES})
-
-
