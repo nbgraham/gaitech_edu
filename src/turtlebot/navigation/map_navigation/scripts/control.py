@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # license removed for brevity
 import rospy
+import copy
 from std_msgs.msg import String
 from gaitech_edu.msg import goal
 
@@ -53,7 +54,7 @@ class control():
             self.callback("Success")
         else:
             if choice == 't':
-                self.plannedHighlights = self.highlights
+                self.plannedHighlights = copy.deepcopy(self.highlights)
                 rospy.loginfo("Starting tour")
                 self.goToHighlight(self.plannedHighlights.pop())
             elif (choice < len(self.highlights)):
