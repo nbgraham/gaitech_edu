@@ -13,8 +13,8 @@
   <arg name="3d_sensor"  default="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
-  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/psu.yaml"/> <!-- psu -->
-  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/psu.world"/>
+  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/Lmap.yaml"/> <!-- psu -->
+  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/Lmap.world"/>
   <arg name="initial_pose_x" default="20.925"/>
   <arg name="initial_pose_y" default="11.925"/>
   <arg name="initial_pose_a" default="0.0"/>
@@ -68,7 +68,7 @@
     <param name="frame_id" value="/map"/>
   </node>
 
-  <include file="$(find turtlebot_navigation)/launch/includes/amcl.launch.xml">
+  <include file="$(find turtlebot_navigation)/launch/includes/amcl/amcl.launch.xml">
     <arg name="scan_topic" value="scan"/>
     <arg name="use_map_topic" value="true"/>
     <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
