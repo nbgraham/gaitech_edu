@@ -14,9 +14,9 @@
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
   <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mep.yaml"/> <!-- psu -->
-  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/maze.world"/>
-  <arg name="initial_pose_x" default="2.0"/>
-  <arg name="initial_pose_y" default="2.0"/>
+  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/mep.world"/>
+  <arg name="initial_pose_x" default="0.7"/>
+  <arg name="initial_pose_y" default="-1.38"/>
   <arg name="initial_pose_a" default="0.0"/>
 
   <param name="/use_sim_time" value="true"/>
