@@ -13,7 +13,7 @@
   <arg name="3d_sensor"  default="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
-  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/maze.yaml"/> <!-- psu -->
+  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mep.yaml"/> <!-- psu -->
   <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/maze.world"/>
   <arg name="initial_pose_x" default="2.0"/>
   <arg name="initial_pose_y" default="2.0"/>
