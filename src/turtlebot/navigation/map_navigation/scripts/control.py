@@ -18,10 +18,10 @@ class control():
         self.plannedHighlights = []
 
         self.highlights = []
-        self.highlights.append(highlight("A", 4, 2))
-        self.highlights.append(highlight("B", 1.7, 7))
-        self.highlights.append(highlight("C", 9, 1.4))
-        self.highlights.append(highlight("D", 1, 9))
+        self.highlights.append(highlight("A", 2, 3))
+        self.highlights.append(highlight("B", 3, 8))
+        self.highlights.append(highlight("C", 8, 7))
+        self.highlights.append(highlight("D", 6, 2))
 
         rospy.init_node('control', anonymous=False)
         self.pub = rospy.Publisher('goals', goal, queue_size=10)
