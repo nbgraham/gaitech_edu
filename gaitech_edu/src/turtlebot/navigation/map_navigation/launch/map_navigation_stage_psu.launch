@@ -1,0 +1,5 @@
+<launch>
+      <include file="$(find gaitech_edu)/src/turtlebot/navigation/map_navigation/launch/turtlebot_stage_psu.launch"/>
+     <node name="map_navigation" pkg="gaitech_edu" type="map_navigation.py" output="screen">
+     </node>
+</launch>
