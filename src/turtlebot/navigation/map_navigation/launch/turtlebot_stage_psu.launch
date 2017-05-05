@@ -8,6 +8,9 @@
   - rviz view
  -->
 <launch>
+
+  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"></include>
+
   <!-- Name of the map to use (without path nor extension) and initial position -->
   <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mep.yaml"/> <!-- psu -->
   <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/mep.world"/>
