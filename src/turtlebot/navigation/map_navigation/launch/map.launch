@@ -1,4 +1,4 @@
-<!-- 
+<!--
   Turtlebot navigation simulation:
   - stage
   - map_server
@@ -13,15 +13,15 @@
   <arg name="3d_sensor"  default="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
-  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mep.yaml"/> <!-- psu -->
-  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/mep.world"/>
-  <arg name="initial_pose_x" default="0.7"/>
-  <arg name="initial_pose_y" default="-1.38"/>
+  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/maze.yaml"/> <!-- psu -->
+  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/maze.world"/>
+  <arg name="initial_pose_x" default="2.0"/>
+  <arg name="initial_pose_y" default="2.0"/>
   <arg name="initial_pose_a" default="0.0"/>
 
   <param name="/use_sim_time" value="true"/>
   <!--  ******************** Stage ********************  -->
-  <!-- 
+  <!--
         Publishes transforms:
           /base_link -> /base_laser
           /base_footprint -> /base_link (identity)
@@ -34,7 +34,7 @@
           base_watchdog_timeout : time (s) after receiving the last command on cmd_vel before stopping the robot
         Args:
           -g : run in headless mode.
-  --> 
+  -->
   <node pkg="stage_ros" type="stageros" name="stageros" args="$(arg world_file)">
     <param name="base_watchdog_timeout" value="0.5"/>
     <remap from="odom" to="odom"/>

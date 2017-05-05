@@ -8,14 +8,17 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
 `catkin_create_pkg gaitech_edu`
 2. Clone this repo into new project  
   `cd ~/catkin_ws/src/gaitech_edu`  
-  `rm *`  
   `git clone https://github.com/nbgraham/gaitech_edu.git .`  
 3.
  - Update keys (maybe)  
 `sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'`  
 `wget http://code.ros.org/packages/ros.key -O - | sudo apt-key add -`  
 `sudo apt-get update`
-4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  (we need to reverse this step)
+ - Install general sound for ROS (shouldn't be needed anymore)  
+      `sudo apt-get install ros-indigo-audio-common`
+ - Install pocketsphinx, whatever that is  
+      `sudo apt-get install ros-indigo-pocketsphinx`
+4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  
   `sudo mv /opt/ros/indigo/share/turtlebot_navigation/launch/includes/amcl/amcl.launch.xml /opt/ros/indigo/share/turtlebot_navigation/launch/includes`
 5. Run the project  
     `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
