@@ -23,6 +23,7 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
 
 ## Possible issues
 If you get an issue about contacting X Display, try `ssh -X`  
+If you get "no module gaitech_edu.msg" make sure to `source ~/catkin_ws/devel/setup.bash`  
 
 ## To Do
  - [ ] Create a world (probably need to create an actual environment and use the robot to map it
