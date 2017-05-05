@@ -18,10 +18,10 @@ class control():
         self.plannedHighlights = []
 
         self.highlights = []
-        self.highlights.append(highlight("A", 2.25,-1.8))
-        self.highlights.append(highlight("B", 2.8,-0.04))
-        self.highlights.append(highlight("C", 0.7,-1.3))
-        self.highlights.append(highlight("D", 0.86,0.17))
+        self.highlights.append(highlight("A", 1.1523, -0.1251))
+        self.highlights.append(highlight("B", 2.6137, 1.3885))
+        self.highlights.append(highlight("C", -0.2931, 1.5051))
+        self.highlights.append(highlight("D", 1.3457, 2.5117))
 
         rospy.init_node('control', anonymous=False)
         self.pub = rospy.Publisher('goals', goal, queue_size=10)
@@ -97,4 +97,3 @@ if __name__ == '__main__':
         control()
     except rospy.ROSInterruptException:
         pass
-
