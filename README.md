@@ -10,18 +10,16 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
   `cd ~/catkin_ws/src/gaitech_edu`  
   `rm *`  
   `git clone https://github.com/nbgraham/gaitech_edu.git .`  
-3.
- - Update keys (maybe)  
-`sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'`  
-`wget http://code.ros.org/packages/ros.key -O - | sudo apt-key add -`  
-`sudo apt-get update`
-4. Move amcl.launch.xml from ros/indigo/share/turtlebot_navigation/launch/includes/amcl/ to                                        ros/indigo/share/turtlebot_navigation/launch/includes  (we need to reverse this step)
-  `sudo mv /opt/ros/indigo/share/turtlebot_navigation/launch/includes/amcl/amcl.launch.xml /opt/ros/indigo/share/turtlebot_navigation/launch/includes`
-5. Run the project  
-    `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
-    `rosrun gaitech_edu control.py`
+
+3. Setup on turtlebot through ssh  
+    `roslaunch gaitech_edu map_navigation_stage_psu.launch`
+4. Run the project on rowork  
+    `rosrun gaitech_edu map_navigation.py` This is the actual planning that sends velocity commands
+    `rosrun gaitech_edu control.py` This is just a user interface that send goals to map_navigation
 
 ## Possible issues
+Start it at position C because that is the initial pose in turtlebot_stage_psu.launch  
+Re-open RVIZ every time you run the launch file  
 If you get an issue about contacting X Display, try `ssh -X`  
 If you get "no module gaitech_edu.msg" make sure to `source ~/catkin_ws/devel/setup.bash`  
 If you get "could not find executable <name>.py", make sure it has executable permissions `chmod +x <name>.py`
