@@ -21,6 +21,9 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
     `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
     `rosrun gaitech_edu control.py`
 
+## Possible issues
+If you get an issue about contacting X Display, try `ssh -X`  
+
 ## To Do
  - [ ] Create a world (probably need to create an actual environment and use the robot to map it
  - [ ] Choose new points as destinations and add those options to the command line options
