@@ -12,7 +12,8 @@ All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_na
   `git clone https://github.com/nbgraham/gaitech_edu.git .`  
 
 3. Setup on turtlebot through ssh (use USB to move entire gaitech_edu package onto turtlebot)  
-    `roslaunch gaitech_edu map_navigation_stage_psu.launch`
+    `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
+    Make sure to remove the Gmapping from the end of 3dsensor.launch if its still there  
 4. Run the project on rowork  
     `rosrun gaitech_edu map_navigation.py` This is the actual planning that sends velocity commands
     `rosrun gaitech_edu control.py` This is just a user interface that send goals to map_navigation
