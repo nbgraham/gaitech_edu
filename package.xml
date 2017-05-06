@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>gaitech_edu</name>
+  <name>tour_bot</name>
   <version>0.0.1</version>
-  <description>The gaitech_edu package</description>
+  <description>The tour_bot package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

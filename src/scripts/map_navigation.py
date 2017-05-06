@@ -6,7 +6,7 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from math import radians, degrees
 from actionlib_msgs.msg import *
 from geometry_msgs.msg import Point
-from gaitech_edu.msg import goal
+from tour_bot.msg import goal
 from std_msgs.msg import String
 
 

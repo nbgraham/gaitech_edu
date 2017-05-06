@@ -12,8 +12,8 @@
   <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"></include>
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
-  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mappedActual.yaml"/> <!-- psu -->
-  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/mappedActual.world"/>
+  <arg name="map_file"       default=" $(find tour_bot)/src/maps/mappedActual.yaml"/> <!-- psu -->
+  <arg name="world_file"     default=" $(find tour_bot)/src/maps/stage/mappedActual.world"/>
   <arg name="initial_pose_x" default="0.7"/>
   <arg name="initial_pose_y" default="-1.38"/>
   <arg name="initial_pose_a" default="0.0"/>

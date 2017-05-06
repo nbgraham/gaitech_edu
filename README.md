@@ -2,20 +2,20 @@
 ## Set-up
 1. Create a new package.  
 `cd ~/catkin_ws/src`  
-`catkin_create_pkg gaitech_edu`  
+`catkin_create_pkg tour_bot`  
 
 2. Clone this repo into new project  
-  `cd ~/catkin_ws/src/gaitech_edu`  
+  `cd ~/catkin_ws/src/tour_bot`  
   `rm *`  
-  `git clone https://github.com/nbgraham/gaitech_edu.git .`  
+  `git clone https://github.com/nbgraham/tour_bot.git .`  
 
 
 ### Run on real robot
 3. Setup in real world  
   Start it at position C because that is the initial pose in turtlebot_stage_psu.launch
 
-3. Setup on turtlebot through ssh (use USB to move entire gaitech_edu package onto turtlebot)  
-  `roslaunch gaitech_edu actual_turtlebot.launch`  
+3. Setup on turtlebot through ssh (use USB to move entire tour_bot package onto turtlebot)  
+  `roslaunch tour_bot actual_turtlebot.launch`  
   Make sure to remove the Gmapping from the end of 3dsensor.launch if its still there or else the planned map will be overridden by the map that slam mapping is creating  
   ```xml
   <!-- Gmapping -->
@@ -24,20 +24,20 @@
   ```
 
 4. Run the project on rowork  
-  `rosrun gaitech_edu map_navigation.py` This is the actual planning that sends velocity commands  
-  `rosrun gaitech_edu control.py` This is just a user interface that send goals to map_navigation
+  `rosrun tour_bot map_navigation.py` This is the actual planning that sends velocity commands  
+  `rosrun tour_bot control.py` This is just a user interface that send goals to map_navigation
 
   Open rviz on rowork `rviz`  
   Re-open RVIZ every time you run the launch file
 
 ### Run in simulation
 Run the project  
-`roslaunch gaitech_edu map_navigation_stage_psu.launch`  
-`rosrun gaitech_edu control.py`
+`roslaunch tour_bot map_navigation_stage_psu.launch`  
+`rosrun tour_bot control.py`
 
 ## Possible issues
  - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
- - If you get "no module gaitech_edu.msg" make sure to `catkin_make` and `source ~/catkin_ws/devel/setup.bash`  
+ - If you get "no module tour_bot.msg" make sure to `catkin_make` and `source ~/catkin_ws/devel/setup.bash`  
  - If you get "could not find executable <name>.py", make sure it has executable permissions `chmod +x <name>.py`
 
 ## To Do
@@ -48,4 +48,4 @@ Run the project
  - [ ] Document everything we have done
 
 
- [Original gaitech_edu repo](https://github.com/aniskoubaa/gaitech_edu)  
+ [Original tour_bot repo](https://github.com/aniskoubaa/tour_bot)  

@@ -3,7 +3,7 @@
 import rospy
 import copy
 from std_msgs.msg import String
-from gaitech_edu.msg import goal
+from tour_bot.msg import goal
 
 # Simple structure to store and pass highlights in the tour area (navigation goals)
 class highlight():
@@ -90,7 +90,7 @@ class control():
     def goToHighlight(self, highlightIn):
         # Set instdance currentHighlight so that status prinouts in callback can be descriptive
         self.currentHighlight = highlightIn
-        
+
         rospy.loginfo("Going to " + highlightIn.name)
         new_goal = self.highlightToGoal(highlightIn)
         self.goalPublisher.publish(new_goal)
