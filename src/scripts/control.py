@@ -57,16 +57,7 @@ class control():
     def promptUserForNextDestination(self):
         self.choice = 'q'
 
-        rospy.loginfo("|-------------------------------|")
-        rospy.loginfo("| Choose a destination or task:")
-
-        for index, item in enumerate(self.highlights):
-            rospy.loginfo("| " + str(index) + " : " + item.name)
-
-        rospy.loginfo("| 't' : Tour ")
-        rospy.loginfo("| 'q' : Quit ")
-        rospy.loginfo("|-------------------------------|")
-        rospy.loginfo("| PRESS A KEY:")
+        self.printUserOptions()
 
         self.choice = input()
 
@@ -81,6 +72,18 @@ class control():
                 self.goToHighlight(self.highlights[choice])
         # wait for map_navigation.py to finish moving
 
+    def printUserOptions(self):
+        rospy.loginfo("|-------------------------------|")
+        rospy.loginfo("| Choose a destination or task:")
+
+        # Print an option for each highilgh in the static highlights list
+        for index, item in enumerate(self.highlights):
+            rospy.loginfo("| " + str(index) + " : " + item.name)
+
+        rospy.loginfo("| 't' : Tour ")
+        rospy.loginfo("| 'q' : Quit ")
+        rospy.loginfo("|-------------------------------|")
+        rospy.loginfo("| PRESS A KEY:")
 
     def goToHighlight(self, highlightIn):
         self.currentHighlight = highlightIn
