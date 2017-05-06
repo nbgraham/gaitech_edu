@@ -48,4 +48,4 @@ Run the project
  - [ ] Document everything we have done
 
 
- [Original gaitech_wdu repo](https://github.com/aniskoubaa/gaitech_edu)  
+ [Original gaitech_edu repo](https://github.com/aniskoubaa/gaitech_edu)  
