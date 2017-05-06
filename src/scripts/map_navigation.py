@@ -13,14 +13,17 @@ from std_msgs.msg import String
 class map_navigation():
 
     def __init__(self):
-
-        # declare the coordinates of ros
-        self.goalReached = False
-
-        # initiliaze
+        # initiliaze the node
         rospy.init_node('map_navigation', anonymous=False)
 
+        # Subscribe to the 'gaols' topic
+        # control.py sends destinations on this topic
+        # map_navigation.py recieves them and sned vel command so the robot goes to the goal
         rospy.Subscriber("goals", goal, self.callback)
+
+        # Sets up a publisher to 'result' topic
+        # map_navigation.py sends either success or failure on this topic when a planned navigation is completed
+        # control.py listens to this topic so it knows when to prompt for a new destination
         self.pub = rospy.Publisher('result', String, queue_size=10)
 
         # spin() simply keeps python from exiting until this node is stopped
@@ -32,8 +35,9 @@ class map_navigation():
         rospy.sleep()
 
 
-    def moveToHighlight(self, highlight):
-        self.moveToGoal(highlight.x, highlight.y)
+    def callback(self, data):
+        rospy.loginfo("New goal: %s", data.name)
+        self.moveToGoal(data.x, data.y)
 
 
     def moveToGoal(self,xGoal,yGoal):
@@ -74,10 +78,6 @@ class map_navigation():
             rospy.loginfo("The robot failed to reach the destination")
             self.pub.publish("Failure")
             return False
-
-    def callback(self, data):
-        rospy.loginfo("New goal: %s", data.name)
-        self.moveToGoal(data.x, data.y)
 
 
 if __name__ == '__main__':
