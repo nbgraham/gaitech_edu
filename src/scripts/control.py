@@ -28,7 +28,7 @@ class control():
         rospy.Subscriber('result', String, self.callback)
 
         # Creates the static list of highlights that the user can choose from
-        self.createHighlightsList()
+        self.highlights = self.createHighlightsList()
 
         # This stores the highlight the robot is currently navigating to
         self.currentHighlight = None
@@ -41,17 +41,18 @@ class control():
         rospy.spin()
 
     def createHighlightsList(self):
-        self.highlights = []
+        result_highlights = []
 
         # Change or add desired highlights here
         # Getting the coordinates:
         # Run `rostopic echo move_base_simple/goal`
         # Set a 2d Nav Goal in RViz at your desired point
-        self.highlights.append(highlight("A", 1.1523, -0.1251))
-        self.highlights.append(highlight("B", 2.6137, 1.3885))
-        self.highlights.append(highlight("C", -0.2931, 1.5051))
-        self.highlights.append(highlight("D", 1.3457, 2.5117))
+        result_highlights.append(highlight("A", 1.1523, -0.1251))
+        result_highlights.append(highlight("B", 2.6137, 1.3885))
+        result_highlights.append(highlight("C", -0.2931, 1.5051))
+        result_highlights.append(highlight("D", 1.3457, 2.5117))
 
+        return result_highlights
 
     def promptUserForNextDestination(self):
         self.choice = 'q'
