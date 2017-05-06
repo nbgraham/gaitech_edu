@@ -9,6 +9,8 @@
   `rm *`  
   `git clone https://github.com/nbgraham/gaitech_edu.git .`  
 
+
+### Run on real robot
 3. Setup in real world  
   Start it at position C because that is the initial pose in turtlebot_stage_psu.launch
 
@@ -27,6 +29,11 @@
 
   Open rviz on rowork `rviz`  
   Re-open RVIZ every time you run the launch file
+
+### Run in simulation
+Run the project  
+`roslaunch gaitech_edu map_navigation_stage_psu.launch`  
+`rosrun gaitech_edu control.py`
 
 ## Possible issues
  - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
