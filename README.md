@@ -24,7 +24,7 @@
   ```
 
 4. Run the project on rowork  
-  `rosrun gaitech_edu actual_navigation.py` This is the actual planning that sends velocity commands
+  `rosrun gaitech_edu actual_navigation.py` This is the actual planning that sends velocity commands  
   `rosrun gaitech_edu control.py` This is just a user interface that send goals to map_navigation
 
   Open rviz on rowork `rviz`  
