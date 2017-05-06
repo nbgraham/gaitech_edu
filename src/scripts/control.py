@@ -55,14 +55,16 @@ class control():
         return result_highlights
 
     def promptUserForNextDestination(self):
+        # Default choice to quit
         self.choice = 'q'
 
         self.printUserOptions()
 
+        # Accept user choice
         self.choice = input()
 
         if self.choice == 'q':
-            self.callback("Success")
+            self.callback("")
         else:
             if self.choice == 't':
                 self.plannedHighlights = copy.deepcopy(self.highlights)
@@ -86,7 +88,9 @@ class control():
         rospy.loginfo("| PRESS A KEY:")
 
     def goToHighlight(self, highlightIn):
+        # Set instdance currentHighlight so that status prinouts in callback can be descriptive
         self.currentHighlight = highlightIn
+        
         rospy.loginfo("Going to " + highlightIn.name)
         new_goal = self.highlightToGoal(highlightIn)
         self.goalPublisher.publish(new_goal)
@@ -99,17 +103,24 @@ class control():
         return new_goal
 
     def callback(self, data):
-        if (self.choice !='q'):
+        if self.choice !='q':
+            # User did not choose quit
+
             if str(data) == "data: Success":
                 rospy.loginfo("Robot made it to " + self.currentHighlight.name + " !")
             else:
                 rospy.logwarn("Robot failed to get to " + self.currentHighlight.name)
 
             if len(self.plannedHighlights) > 0:
+                # There are still highlights left in the tour
+                # So go to the next highlight
                 self.goToHighlight(self.plannedHighlights.pop())
             else:
+                # There are no planned highlights in the tour
+                # So ask the user for the next option
                 self.promptUserForNextDestination()
         else:
+            # User chose quit
             rospy.loginfo("Quitting")
             rospy.signal_shutdown("User quit")
 
