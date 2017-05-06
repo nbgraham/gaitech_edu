@@ -22,10 +22,10 @@ class map_navigation():
         # map_navigation.py recieves them and sned vel command so the robot goes to the goal
         rospy.Subscriber("goals", goal, self.callback)
 
-        # Sets up a publisher to 'result' topic
+        # Set up a publisher to 'result' topic
         # map_navigation.py sends either success or failure on this topic when a planned navigation is completed
         # control.py listens to this topic so it knows when to prompt for a new destination
-        self.pub = rospy.Publisher('result', String, queue_size=10)
+        self.resultPublisher = rospy.Publisher('result', String, queue_size=10)
 
         # spin() simply keeps python from exiting until this node is stopped
         rospy.spin()
@@ -72,19 +72,17 @@ class map_navigation():
 
         if(ac.get_state() ==  GoalStatus.SUCCEEDED):
             rospy.loginfo("You have reached the destination")
-            self.pub.publish("Success")
+            self.resultPublisher.publish("Success")
             return True
 
         else:
             rospy.loginfo("The robot failed to reach the destination")
-            self.pub.publish("Failure")
+            self.resultPublisher.publish("Failure")
             return False
 
 
 if __name__ == '__main__':
     try:
-        rospy.loginfo("You have reached the destination")
         map_navigation()
-        rospy.spin()
     except rospy.ROSInterruptException:
-        rospy.loginfo("map_navigation node terminated.")
+        rospy.logwarn("map_navigation node terminated.")
