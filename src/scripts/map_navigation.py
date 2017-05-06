@@ -15,6 +15,7 @@ class map_navigation():
     def __init__(self):
         # initiliaze the node
         rospy.init_node('map_navigation', anonymous=False)
+        rospy.loginfo("Initialized node")
 
         # Subscribe to the 'gaols' topic
         # control.py sends destinations on this topic
