@@ -14,7 +14,7 @@
 3. Setup in real world  
   Start it at position C because that is the initial pose in turtlebot_stage_psu.launch
 
-3. Setup on turtlebot through ssh (use USB to move entire tour_bot package onto turtlebot)  
+3. Setup on turtlebot through ssh (use USB to move entire tour_bot package onto turtlebot or use scp)  
   `roslaunch tour_bot actual_turtlebot.launch`  
   Make sure to remove the Gmapping from the end of 3dsensor.launch if its still there or else the planned map will be overridden by the map that slam mapping is creating  
   ```xml
@@ -32,7 +32,9 @@
 
 ### Run in simulation
 Run the project  
-`roslaunch tour_bot map_navigation_stage_psu.launch`  
+`roslaunch tour_bot gazebo_turtlebot.launch`
+~~`roslaunch tour_bot map_navigation_stage_psu.launch`~~
+`rosrun tour_bot map_navigation.py`
 `rosrun tour_bot control.py`
 
 ## Possible issues
