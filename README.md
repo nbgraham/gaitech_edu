@@ -32,10 +32,10 @@
 
 ### Run in simulation
 Run the project  
-`roslaunch tour_bot gazebo_turtlebot.launch`
-`~~roslaunch tour_bot map_navigation_stage_psu.launch~~`
-`rosrun tour_bot map_navigation.py`
-`rosrun tour_bot control.py`
+`roslaunch tour_bot gazebo_turtlebot.launch` This launches simulation in gazebo
+~~`roslaunch tour_bot map_navigation_stage_psu.launch`~~
+`rosrun tour_bot map_navigation.py` This is the actual planning that sends velocity commands
+`rosrun tour_bot control.py` This is just a user interface that send goals to map_navigation
 
 ## Possible issues
  - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
