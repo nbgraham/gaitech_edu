@@ -33,7 +33,7 @@
 ### Run in simulation
 Run the project  
 `roslaunch tour_bot gazebo_turtlebot.launch`
-~~`roslaunch tour_bot map_navigation_stage_psu.launch`~~
+`~~roslaunch tour_bot map_navigation_stage_psu.launch~~`
 `rosrun tour_bot map_navigation.py`
 `rosrun tour_bot control.py`
 
