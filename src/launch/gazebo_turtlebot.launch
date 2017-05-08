@@ -14,7 +14,7 @@
   <arg name="world_file"     default=" $(find tour_bot)/src/maps/stage/mappedActual.world"/>
   <arg name="initial_pose_x" default="0.869776725769"/>
   <arg name="initial_pose_y" default="0.197594881058"/>
-  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="initial_pose_a" default="-0.2"/>
 
   <!--  ******************** Stage ********************  -->
   <!--
