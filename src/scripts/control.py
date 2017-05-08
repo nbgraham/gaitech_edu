@@ -14,7 +14,7 @@ class highlight():
 
 
 class control():
-
+    choice = 'q'
     def __init__(self):
         # Initialize the node
         rospy.init_node('control', anonymous=False)
@@ -70,8 +70,8 @@ class control():
                 self.plannedHighlights = copy.deepcopy(self.highlights)
                 rospy.loginfo("Starting tour")
                 self.goToHighlight(self.plannedHighlights.pop())
-            elif (choice < len(self.highlights)):
-                self.goToHighlight(self.highlights[choice])
+            elif (self.choice < len(self.highlights)):
+                self.goToHighlight(self.highlights[self.choice])
         # wait for map_navigation.py to finish moving
 
     def printUserOptions(self):
