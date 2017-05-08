@@ -30,10 +30,12 @@ class control():
         # Creates the static list of highlights that the user can choose from
         self.highlights = self.createHighlightsList()
 
+
         # This stores the highlight the robot is currently navigating to
         self.currentHighlight = None
         # This stores a list of highlights to go to for the tour
         self.plannedHighlights = []
+        self.gazeboHighlights = self.createGazeboList()
 
         self.promptUserForNextDestination()
 
@@ -54,6 +56,20 @@ class control():
 
         return result_highlights
 
+    def createGazeboList(self):
+        result_highlights = []
+
+        # Change or add desired highlights here
+        # Getting the coordinates:
+        # Run `rostopic echo move_base_simple/goal`
+        # Set a 2d Nav Goal in RViz at your desired point
+        result_highlights.append(highlight("A", 0.5247,-1.3834977))
+        result_highlights.append(highlight("B", 0.91027,0.107936))
+        result_highlights.append(highlight("C", 2.367,-1.557))
+        result_highlights.append(highlight("D", 2.5827,-0.0806))
+
+        return result_highlights
+
     def promptUserForNextDestination(self):
         # Default choice to quit
         self.choice = 'q'
@@ -70,6 +86,10 @@ class control():
                 self.plannedHighlights = copy.deepcopy(self.highlights)
                 rospy.loginfo("Starting tour")
                 self.goToHighlight(self.plannedHighlights.pop())
+            elif self.choice == 'g':
+                self.plannedHighlights = copy.deepcopy(self.gazeboHighlights)
+                rospy.loginfo("Starting tour")
+                self.goToHighlight(self.plannedHighlights.pop())
             elif (self.choice < len(self.highlights)):
                 self.goToHighlight(self.highlights[self.choice])
         # wait for map_navigation.py to finish moving
@@ -83,6 +103,7 @@ class control():
             rospy.loginfo("| " + str(index) + " : " + item.name)
 
         rospy.loginfo("| 't' : Tour ")
+        rospy.loginfo("| 'g' : Gazebo Tour")
         rospy.loginfo("| 'q' : Quit ")
         rospy.loginfo("|-------------------------------|")
         rospy.loginfo("| PRESS A KEY:")
