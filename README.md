@@ -27,15 +27,15 @@
   `rosrun tour_bot map_navigation.py` This is the actual planning that sends velocity commands  
   `rosrun tour_bot control.py` This is just a user interface that send goals to map_navigation
 
-  Open rviz on rowork `rviz`  
-  Re-open RVIZ every time you run the launch file
 
 ### Run in simulation
+Move the map model to gazebo models.  
+`cp -r ~/catkin_ws/src/tour_bot/src/maps/FinalProjectMap ~/.gazebo/models`
+
 Run the project  
-`roslaunch tour_bot gazebo_turtlebot.launch` This launches simulation in gazebo
-~~`roslaunch tour_bot map_navigation_stage_psu.launch`~~
-`rosrun tour_bot map_navigation.py` This is the actual planning that sends velocity commands
-`rosrun tour_bot control.py` This is just a user interface that send goals to map_navigation
+`roslaunch tour_bot gazebo_turtlebot.launch` This launches simulation in gazebo  
+`rosrun tour_bot map_navigation.py`  
+`rosrun tour_bot control.py`  
 
 ## Possible issues
  - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
@@ -47,7 +47,7 @@ Run the project
  - [x] Choose new points as destinations and add those options to the command line options
  - [x] Add an option to tour all of the destinations
  - [x] Reduce status print statements and add print outs for options and description for each destination
- - [ ] Document everything we have done
+ - [x] Document everything we have done
 
 
  [Original tour_bot repo](https://github.com/aniskoubaa/tour_bot)  
