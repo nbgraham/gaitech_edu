@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(gaitech_edu)
+project(tour_bot)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -49,5 +49,5 @@ CATKIN_DEPENDS message_runtime
 #add_executable(joy_teleop src/turtlebot/voice_teleop/joy_teleop.cpp)
 #target_link_libraries(joy_teleop ${catkin_LIBRARIES})
 
-add_executable(map_navigation_node src/turtlebot/navigation/map_navigation/map_navigation.cpp)
-target_link_libraries(map_navigation_node ${catkin_LIBRARIES})
+#add_executable(map_navigation_node src/turtlebot/navigation/map_navigation/map_navigation.cpp)
+#target_link_libraries(map_navigation_node ${catkin_LIBRARIES})

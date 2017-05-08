@@ -12,8 +12,8 @@
   <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"></include>
 
   <!-- Name of the map to use (without path nor extension) and initial position -->
-  <arg name="map_file"       default=" $(find gaitech_edu)/src/maps/mappedActual.yaml"/> <!-- psu -->
-  <arg name="world_file"     default=" $(find gaitech_edu)/src/maps/stage/mappedActual.world"/>
+  <arg name="map_file"       default=" $(find tour_bot)/src/maps/mappedActual.yaml"/> <!-- psu -->
+  <arg name="world_file"     default=" $(find tour_bot)/src/maps/stage/mappedActual.world"/>
   <arg name="initial_pose_x" default="0.7"/>
   <arg name="initial_pose_y" default="-1.38"/>
   <arg name="initial_pose_a" default="0.0"/>
@@ -33,10 +33,6 @@
         Args:
           -g : run in headless mode.
   -->
-
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <param name="use_gui" value="true"/>
-  </node>
 
   <!--  ************** Navigation  ***************  -->
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
@@ -147,4 +143,6 @@
     <arg name="zeroconf_port"                     value="$(arg zeroconf_port)"/>
 
   </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tour_bot)/rviz/majorprojectconfig.rviz"/>
 </launch>

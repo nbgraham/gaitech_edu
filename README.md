@@ -1,72 +1,53 @@
-[gaitech repo](https://github.com/aniskoubaa/gaitech_edu)  
-All the relevant code seems to be in gaitech_edu/src/turtlebot/navigation/map_navigation/scripts/map_navigation.py
-
-# robot-tour-guide
+# Robot Tour Guide
 ## Set-up
 1. Create a new package.  
 `cd ~/catkin_ws/src`  
-`catkin_create_pkg gaitech_edu`
-2. Clone this repo into new project  
-  `cd ~/catkin_ws/src/gaitech_edu`  
-  `rm *`  
-  `git clone https://github.com/nbgraham/gaitech_edu.git .`  
+`catkin_create_pkg tour_bot`  
 
-3. Setup on turtlebot through ssh (use USB to move entire gaitech_edu package onto turtlebot)  
-    `roslaunch gaitech_edu map_navigation_stage_psu.launch`  
-    Make sure to remove the Gmapping from the end of 3dsensor.launch if its still there  
+2. Clone this repo into new project  
+  `cd ~/catkin_ws/src/tour_bot`  
+  `rm *`  
+  `git clone https://github.com/nbgraham/tour_bot.git .`  
+
+
+### Run on real robot
+3. Setup in real world  
+  Start it at position C because that is the initial pose in turtlebot_stage_psu.launch
+
+3. Setup on turtlebot through ssh (use USB to move entire tour_bot package onto turtlebot or use scp)  
+  `roslaunch tour_bot actual_turtlebot.launch`  
+  Make sure to remove the Gmapping from the end of 3dsensor.launch if its still there or else the planned map will be overridden by the map that slam mapping is creating  
+  ```xml
+  <!-- Gmapping -->
+  <arg name="custom_gmapping_launch_file" default="$(find turtlebot_navigation)/launch/includes/gmapping/$(arg 3d_sensor)_gmapping.launch.xml"/>
+  <include file="$(arg custom_gmapping_launch_file)"/>
+  ```
+
 4. Run the project on rowork  
-    `rosrun gaitech_edu map_navigation.py` This is the actual planning that sends velocity commands
-    `rosrun gaitech_edu control.py` This is just a user interface that send goals to map_navigation
+  `rosrun tour_bot map_navigation.py` This is the actual planning that sends velocity commands  
+  `rosrun tour_bot control.py` This is just a user interface that send goals to map_navigation
+
+
+### Run in simulation
+Move the map model to gazebo models.  
+`cp -r ~/catkin_ws/src/tour_bot/src/maps/FinalProjectMap ~/.gazebo/models`
+
+Run the project  
+`roslaunch tour_bot gazebo_turtlebot.launch` This launches simulation in gazebo  
+`rosrun tour_bot map_navigation.py`  
+`rosrun tour_bot control.py`  
 
 ## Possible issues
-Start it at position C because that is the initial pose in turtlebot_stage_psu.launch  
-Re-open RVIZ every time you run the launch file  
-If you get an issue about contacting X Display, try `ssh -X`  
-If you get "no module gaitech_edu.msg" make sure to `source ~/catkin_ws/devel/setup.bash`  
-If you get "could not find executable <name>.py", make sure it has executable permissions `chmod +x <name>.py`
+ - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
+ - If you get "no module tour_bot.msg" make sure to `catkin_make` and `source ~/catkin_ws/devel/setup.bash`  
+ - If you get "could not find executable <name>.py", make sure it has executable permissions `chmod +x <name>.py`
 
 ## To Do
- - [ ] Create a world (probably need to create an actual environment and use the robot to map it
- - [ ] Choose new points as destinations and add those options to the command line options
- - [ ] Add an option to tour all of the destinations
- - [ ] Reduce status print statements and add print outs for options and description for each destination
- - [ ] Document everything we have done and pretend we did more
+ - [x] Create a world (probably need to create an actual environment and use the robot to map it
+ - [x] Choose new points as destinations and add those options to the command line options
+ - [x] Add an option to tour all of the destinations
+ - [x] Reduce status print statements and add print outs for options and description for each destination
+ - [x] Document everything we have done
 
 
-
-
-
-Gaitech ReadMe
----------
-
-Welcome to Gaitech’s Education Portal!
-================================
-Gaitech is pround to provide you a comprehensive educational framework on Robot Operating System (ROS). We provide a series of online tutorials on ROS that will help you getting familiar with ROS.
-Website: http://edu.gaitech.hk
-
-FAQs about Gaitech EDU
-=====================
-What is Gaitech EDU?
--------------------
-Gaitech EDU is an educational website on robotics and in particular on Robot Operating System (ROS). The objective is to provide an easy-to-follow educational content that helps in better mastering the concepts of ROS and promoting its use for developing robotics software. Gaitech company strives to contribute to the development of ROS and provides its customers and ROS users with technical support and an open education framework to learn ROS.
-
-How does it differ from ROS Wiki documentation?
------------------------------------------------
-Gaitech Education website is NOT meant to be a substitue of ROS wiki documentation website, but a complementary website that is more oriented to providing education and teaching material. In principle, any ROS user should first go through the ROS wiki beginners tutorials, at least for installation, setting up the environment and understanding ROS framework. Gaitech EDU website provide high-quality tutorials in both textual and video format with open source code and instruction of usage. Some of the tutorials in ROS Wiki documentation were reproduced with more details and concrete illustration for faster introduction to the main concepts such as publisher/subscriber paradigm, topics, messages, etc. In addition, Gaitech EDU website provides a educational content on the Turtlebot robot for both simulated robots and real robots.
-
-How Tutorials are designed?
---------------------------
-As the primary objective of Gaitech EDU is to promote education of ROS, tutorials were designed with teaching objectives in mind. Each tutorial starts with Learning outcomes that the student or the learned is expected to know at the end of the tutorial. Then, the tutorial is provided in both textual format and/or video illustrations. Finally, a series of review questions are proposed so that the student self-evaluation his understanding about the concepts presented in the tutorial.
-
-How to use Gaitech EDU?
------------------------
-Gaitech EDU can be helpful in diffent ways. First, it can be used by self-learners to consolidate their understanding of ROS and robotics by going through the different tutorials. Furthermore, it can be used by Turtlebot robot users as we provide a series of tutorials with illustration on how to test, use, and develop program for the turtlebot robot in both simulation and real robot, which is the defact-standard robot for ROS learned. Third, it can be used as a teaching resources by instructors of courses. If you are an instructor and would like to use the education content of the Gaitech EDU website, please contact us, and send us your comments. We will add instructors who are using Gaitech EDU website and link to their courses’ webpages.
-
-Will the current content of the Gaitech EDU website be maintaned and updated?
------------------------------------------------------------------------------
-Yes. Gaitech EDU strives towards updating the educational content and maintaining it. Several tutorials will be added regularly and existing tutorials would also be updated when needed and based on feedback and comment of Gaitech EDU users. If you are interested to stay tuned with any content update, you can subscribe to this forum http://forum.gaitech.hk. However, there are no pre-defined periods of updates.
-
-Subscribe to Gaitech EDU Mailing List
-=====================================
-For technical support and getting responses to queries related to Gaitech EDU website, you need to register to the forum http://forum.gaitech.hk.
-You can also subscribe to Gaitech EDU Mailing List to receive latest news http://lists.gaitech.coins-lab.org/listinfo.cgi/gaitech_edu_users-gaitech.coins-lab.org
+ [Original tour_bot repo](https://github.com/aniskoubaa/tour_bot)  
