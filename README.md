@@ -36,6 +36,7 @@ Run the project
 `roslaunch tour_bot gazebo_turtlebot.launch` This launches simulation in gazebo  
 `rosrun tour_bot map_navigation.py`  
 `rosrun tour_bot control.py`  
+You can only input 'g' for the gazebo touring option.  
 
 ## Possible issues
  - If you get an issue about contacting X Display, try `ssh -X turtlebot@<host>`  
